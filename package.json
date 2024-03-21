@@ -161,7 +161,7 @@
 		"glob": "^10.3.10",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.3.3",
-		"typescript-esbuild": "latest",
+		"typescript-esbuild": "0.4.5",
 		"webpack": "^5.90.3",
 		"webpack-cli": "^5.1.4"
 	},
