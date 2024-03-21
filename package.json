@@ -1,34 +1,25 @@
 {
-	"name": "autopep8",
-	"displayName": "autopep8",
-	"version": "0.0.1",
-	"private": false,
-	"description": "%extension.description%",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"activationEvents": [
+		"onLanguage:python",
+		"workspaceContains:pyproject.toml",
+		"workspaceContains:setup.cfg",
+		"workspaceContains:tox.ini",
+		"workspaceContains:.pep8",
+		"workspaceContains:.flake8"
+	],
+	"author": {
+		"email": "Hello@Playform.Cloud",
+		"name": "Playform",
+		"url": "https://playform.cloud"
+	},
 	"bugs": {
 		"url": "https://github.com/CodeEditorLand/Foundation/issues"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
-	},
-	"type": "module",
-	"main": "./dist/extension.js",
-	"scripts": {
-		"compile": "webpack",
-		"compile-tests": "tsc -p . --outDir out",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"vsce-package": "vsce package -o autopep8.vsix",
-		"vscode:prepublish": "npm run package",
-		"watch": "webpack --watch",
-		"watch-tests": "tsc -p . -w --outDir out"
+	"capabilities": {
+		"virtualWorkspaces": {
+			"description": "Virtual Workspaces are not supported with Autopep8 formatter.",
+			"supported": false
+		}
 	},
 	"contributes": {
 		"commands": [
@@ -139,18 +130,11 @@
 			}
 		]
 	},
-	"activationEvents": [
-		"onLanguage:python",
-		"workspaceContains:pyproject.toml",
-		"workspaceContains:setup.cfg",
-		"workspaceContains:tox.ini",
-		"workspaceContains:.pep8",
-		"workspaceContains:.flake8"
-	],
 	"dependencies": {
 		"fs-extra": "^11.2.0",
 		"vscode-languageclient": "^8.1.0"
 	},
+	"description": "%extension.description%",
 	"devDependencies": {
 		"@types/fs-extra": "^11.0.4",
 		"@types/glob": "^8.1.0",
@@ -161,30 +145,46 @@
 		"glob": "^10.3.10",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.3.3",
-		"typescript-esbuild": "0.4.5",
+		"typescript-esbuild": "",
 		"webpack": "^5.90.3",
 		"webpack-cli": "^5.1.4"
 	},
+	"displayName": "autopep8",
 	"extensionDependencies": [
 		"ms-python.python"
 	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"icon": "icon.png",
 	"galleryBanner": {
 		"color": "#1e415e",
 		"theme": "dark"
 	},
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"icon": "icon.png",
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "./dist/extension.js",
+	"name": "autopep8",
 	"preview": true,
-	"capabilities": {
-		"virtualWorkspaces": {
-			"description": "Virtual Workspaces are not supported with Autopep8 formatter.",
-			"supported": false
-		}
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"scripts": {
+		"compile": "webpack",
+		"compile-tests": "tsc -p . --outDir out",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"vsce-package": "vsce package -o autopep8.vsix",
+		"vscode:prepublish": "npm run package",
+		"watch": "webpack --watch",
+		"watch-tests": "tsc -p . -w --outDir out"
 	},
 	"serverInfo": {
 		"module": "autopep8",
 		"name": "autopep8"
-	}
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
