@@ -133,7 +133,7 @@
 		"@types/fs-extra": "11.0.4",
 		"@types/glob": "8.1.0",
 		"@types/node": "20.x",
-		"glob": "10.3.16",
+		"glob": "10.4.1",
 		"ts-loader": "9.5.1"
 	},
 	"extensionDependencies": [
