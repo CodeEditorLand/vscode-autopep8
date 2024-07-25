@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"activationEvents": [
 		"onLanguage:python",
 		"workspaceContains:pyproject.toml",
@@ -12,6 +13,17 @@
 			"description": "Virtual Workspaces are not supported with Autopep8 formatter.",
 			"supported": false
 		}
+=======
+	"name": "autopep8",
+	"displayName": "autopep8",
+	"description": "%extension.description%",
+	"main": "./dist/extension.js",
+	"scripts": {
+		"compile": "webpack",
+		"compile-tests": "tsc -p . --outDir out",
+		"vsce-package": "vsce package -o autopep8.vsix",
+		"watch-tests": "tsc -p . -w --outDir out"
+>>>>>>> ee5389ed48e231233eeebc34f1893ce3afa60a1d
 	},
 	"contributes": {
 		"commands": [
@@ -122,6 +134,7 @@
 			}
 		]
 	},
+<<<<<<< HEAD
 	"dependencies": {
 		"fs-extra": "^11.2.0"
 	},
@@ -137,10 +150,35 @@
 	"extensionDependencies": [
 		"ms-python.python"
 	],
+=======
+	"activationEvents": [
+		"onLanguage:python",
+		"workspaceContains:pyproject.toml",
+		"workspaceContains:setup.cfg",
+		"workspaceContains:tox.ini",
+		"workspaceContains:.pep8",
+		"workspaceContains:.flake8"
+	],
+	"dependencies": {
+		"fs-extra": "11.2.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "11.0.4",
+		"@types/glob": "8.1.0",
+		"@types/node": "20.x",
+		"glob": "11.0.0",
+		"ts-loader": "9.5.1"
+	},
+	"extensionDependencies": [
+		"ms-python.python"
+	],
+	"icon": "icon.png",
+>>>>>>> ee5389ed48e231233eeebc34f1893ce3afa60a1d
 	"galleryBanner": {
 		"color": "#1e415e",
 		"theme": "dark"
 	},
+<<<<<<< HEAD
 	"icon": "icon.png",
 	"main": "./dist/extension.js",
 	"name": "autopep8",
@@ -150,6 +188,14 @@
 		"compile-tests": "tsc -p . --outDir out",
 		"vsce-package": "vsce package -o autopep8.vsix",
 		"watch-tests": "tsc -p . -w --outDir out"
+=======
+	"preview": true,
+	"capabilities": {
+		"virtualWorkspaces": {
+			"description": "Virtual Workspaces are not supported with Autopep8 formatter.",
+			"supported": false
+		}
+>>>>>>> ee5389ed48e231233eeebc34f1893ce3afa60a1d
 	},
 	"serverInfo": {
 		"module": "autopep8",
