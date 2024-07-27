@@ -1,6 +1,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 """All the action we need during build"""
+
 import io
 import json
 import os
@@ -140,13 +141,23 @@ def lint(session: nox.Session) -> None:
     # check import sorting using isort
     session.install("isort")
     session.run("isort", "--check", "./bundled/tool")
-    session.run("isort", "--check", "--skip", "sample.py", "--skip", "sample_formatted.py", "./src/test/python_tests")
+    session.run(
+        "isort",
+        "--check",
+        "--skip",
+        "sample.py",
+        "--skip",
+        "sample_formatted.py",
+        "./src/test/python_tests",
+    )
     session.run("isort", "--check", "noxfile.py")
 
     # check formatting using autopep8
     session.install("autopep8")
     session.run("autopep8", "--diff", "--exit-code", "--recursive", "./bundled/tool")
-    session.run("autopep8", "--diff", "--exit-code", "--recursive", "./src/test/python_tests")
+    session.run(
+        "autopep8", "--diff", "--exit-code", "--recursive", "./src/test/python_tests"
+    )
     session.run("autopep8", "--diff", "--exit-code", "noxfile.py")
 
     # check typescript code
