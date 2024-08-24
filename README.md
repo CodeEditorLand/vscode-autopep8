@@ -1,18 +1,31 @@
 # Formatter extension for Visual Studio Code using autopep8
 
-A Visual Studio Code extension with support for the autopep8 formatter. The extension ships with `autopep8=2.3.1`.
+A Visual Studio Code extension with support for the autopep8 formatter. The
+extension ships with `autopep8=2.3.1`.
 
-> Note: The minimum supported version of autopep8 is `1.7.0`. If you have any issues with formatting with autopep8, please report it to [this issue tracker](https://github.com/hhatto/autopep8/issues) as this extension is just a wrapper around autopep8.
+> Note: The minimum supported version of autopep8 is `1.7.0`. If you have any
+> issues with formatting with autopep8, please report it to
+> [this issue tracker](https://github.com/hhatto/autopep8/issues) as this
+> extension is just a wrapper around autopep8.
 
-This extension supports for all [actively supported versions](https://devguide.python.org/#status-of-python-branches) of the Python language (i.e., Python >= 3.8).
+This extension supports for all
+[actively supported versions](https://devguide.python.org/#status-of-python-branches)
+of the Python language (i.e., Python >= 3.8).
 
 For more information on autopep8, see https://pypi.org/project/autopep8/.
 
 ## Usage and Features
 
-The autopep8 extension for Visual Studio Code provides formatting support for your Python files. Check out the [Settings section](#settings) for more details on how to customize this extension.
+The autopep8 extension for Visual Studio Code provides formatting support for
+your Python files. Check out the [Settings section](#settings) for more details
+on how to customize this extension.
 
--   **Integrated formatting**: Once this extension is installed in VS Code, autopep8 will be automatically available as a formatter for Python. This is because the extension ships with a autopep8 binary. You can ensure VS Code uses autopep8 by default for all your Python files by setting the following in your User settings (**View** > **Command Palette...** and run **Preferences: Open User Settings (JSON)**):
+-   **Integrated formatting**: Once this extension is installed in VS Code,
+    autopep8 will be automatically available as a formatter for Python. This is
+    because the extension ships with a autopep8 binary. You can ensure VS Code
+    uses autopep8 by default for all your Python files by setting the following
+    in your User settings (**View** > **Command Palette...** and run
+    **Preferences: Open User Settings (JSON)**):
 
     ```json
         "[python]": {
@@ -20,7 +33,11 @@ The autopep8 extension for Visual Studio Code provides formatting support for yo
         }
     ```
 
--   **Format on save**: Automatically format your Python files on save by setting the `editor.formatOnSave` setting to `true` and the `editor.defaultFormatter` setting to `ms-python.autopep8`. You can also enable format on save for Python files only by adding the following to your settings:
+-   **Format on save**: Automatically format your Python files on save by
+    setting the `editor.formatOnSave` setting to `true` and the
+    `editor.defaultFormatter` setting to `ms-python.autopep8`. You can also
+    enable format on save for Python files only by adding the following to your
+    settings:
 
     ```json
       "[python]": {
@@ -29,15 +46,19 @@ The autopep8 extension for Visual Studio Code provides formatting support for yo
       }
     ```
 
--   **Customize autopep8**: You can customize the behavior of autopep8 by setting the `autopep8.args` setting.
+-   **Customize autopep8**: You can customize the behavior of autopep8 by
+    setting the `autopep8.args` setting.
 
 ### Disabling formatting with autopep8
 
-If you want to disable the autopep8 formatter, you can [disable this extension](https://code.visualstudio.com/docs/editor/extension-marketplace#_disable-an-extension) per workspace in Visual Studio Code.
+If you want to disable the autopep8 formatter, you can
+[disable this extension](https://code.visualstudio.com/docs/editor/extension-marketplace#_disable-an-extension)
+per workspace in Visual Studio Code.
 
 ## Settings
 
-There are several settings you can configure to customize the behavior of this extension.
+There are several settings you can configure to customize the behavior of this
+extension.
 
 <table>
   <thead>
@@ -89,19 +110,35 @@ There are several settings you can configure to customize the behavior of this e
 
 ## Logging
 
-From the Command Palette (**View** > **Command Palette ...**), run the **Developer: Set Log Level...** command. Select **autopep8** from the **Extension logs** group. Then select the log level you want to set.
+From the Command Palette (**View** > **Command Palette ...**), run the
+**Developer: Set Log Level...** command. Select **autopep8** from the
+**Extension logs** group. Then select the log level you want to set.
 
-Alternatively, you can set the `autopep8.trace.server` setting to `verbose` to get more detailed logs from the autopep8 server. This can be helpful when filing bug reports.
+Alternatively, you can set the `autopep8.trace.server` setting to `verbose` to
+get more detailed logs from the autopep8 server. This can be helpful when filing
+bug reports.
 
-To open the logs, click on the language status icon (`{}`) on the bottom right of the Status bar, next to the Python language mode. Locate the **autopep8** entry and select **Open logs**.
+To open the logs, click on the language status icon (`{}`) on the bottom right
+of the Status bar, next to the Python language mode. Locate the **autopep8**
+entry and select **Open logs**.
 
 ## Troubleshooting
 
-In this section, you will find some common issues you might encounter and how to resolve them. If you are experiencing any issues that are not covered here, please [file an issue](https://github.com/microsoft/vscode-autopep8/issues).
+In this section, you will find some common issues you might encounter and how to
+resolve them. If you are experiencing any issues that are not covered here,
+please [file an issue](https://github.com/microsoft/vscode-autopep8/issues).
 
--   If the `autopep8.importStrategy` setting is set to `fromEnvironment` but autopep8 is not found in the selected environment, this extension will fallback to using the autopep8 binary that is shipped with the extension. However, if there are dependencies installed in the environment, those dependencies will be used along with the shipped autopep8 binary. This can lead to problems if the dependencies are not compatible with the shipped autopep8 binary.
+-   If the `autopep8.importStrategy` setting is set to `fromEnvironment` but
+    autopep8 is not found in the selected environment, this extension will
+    fallback to using the autopep8 binary that is shipped with the extension.
+    However, if there are dependencies installed in the environment, those
+    dependencies will be used along with the shipped autopep8 binary. This can
+    lead to problems if the dependencies are not compatible with the shipped
+    autopep8 binary.
 
     To resolve this issue, you can:
 
-    -   Set the `autopep8.importStrategy` setting to `useBundled` and the `autopep8.path` setting to point to the custom binary of autopep8 you want to use; or
+    -   Set the `autopep8.importStrategy` setting to `useBundled` and the
+        `autopep8.path` setting to point to the custom binary of autopep8 you
+        want to use; or
     -   Install autopep8 in the selected environment.
