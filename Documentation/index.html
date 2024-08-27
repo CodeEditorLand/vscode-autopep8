@@ -1,0 +1,133 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta name="keywords" content="@playform/document"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>autopep8</title><meta name="description" content="Documentation for autopep8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><link rel="stylesheet" href="assets/custom.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">autopep8</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>autopep8</h2></div><div class="tsd-panel tsd-typography"><a id="md:formatter-extension-for-visual-studio-code-using-autopep8" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Formatter extension for Visual Studio Code using autopep8<a href="#md:formatter-extension-for-visual-studio-code-using-autopep8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>A Visual Studio Code extension with support for the autopep8 formatter. The
+extension ships with <code>autopep8=2.3.1</code>.</p>
+<blockquote>
+<p>Note: The minimum supported version of autopep8 is <code>1.7.0</code>. If you have any
+issues with formatting with autopep8, please report it to
+<a href="https://github.com/hhatto/autopep8/issues">this issue tracker</a> as this
+extension is just a wrapper around autopep8.</p>
+</blockquote>
+<p>This extension supports for all
+<a href="https://devguide.python.org/#status-of-python-branches">actively supported versions</a>
+of the Python language (i.e., Python &gt;= 3.8).</p>
+<p>For more information on autopep8, see <a href="https://pypi.org/project/autopep8/">https://pypi.org/project/autopep8/</a>.</p>
+<a id="md:usage-and-features" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Usage and Features<a href="#md:usage-and-features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The autopep8 extension for Visual Studio Code provides formatting support for
+your Python files. Check out the <a href="#md:settings">Settings section</a> for more details
+on how to customize this extension.</p>
+<ul>
+<li>
+<p><strong>Integrated formatting</strong>: Once this extension is installed in VS Code,
+autopep8 will be automatically available as a formatter for Python. This is
+because the extension ships with a autopep8 binary. You can ensure VS Code
+uses autopep8 by default for all your Python files by setting the following
+in your User settings (<strong>View</strong> &gt; <strong>Command Palette...</strong> and run
+<strong>Preferences: Open User Settings (JSON)</strong>):</p>
+<pre><code class="json"><span class="hl-0">    </span><span class="hl-1">&quot;[python]&quot;</span><span class="hl-0">: {</span><br/><span class="hl-0">      </span><span class="hl-2">&quot;editor.defaultFormatter&quot;</span><span class="hl-0">: </span><span class="hl-1">&quot;ms-python.autopep8&quot;</span><br/><span class="hl-0">    }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>Format on save</strong>: Automatically format your Python files on save by
+setting the <code>editor.formatOnSave</code> setting to <code>true</code> and the
+<code>editor.defaultFormatter</code> setting to <code>ms-python.autopep8</code>. You can also
+enable format on save for Python files only by adding the following to your
+settings:</p>
+<pre><code class="json"><span class="hl-0">  </span><span class="hl-1">&quot;[python]&quot;</span><span class="hl-0">: {</span><br/><span class="hl-0">    </span><span class="hl-2">&quot;editor.defaultFormatter&quot;</span><span class="hl-0">: </span><span class="hl-1">&quot;ms-python.autopep8&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">&quot;editor.formatOnSave&quot;</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">  }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>Customize autopep8</strong>: You can customize the behavior of autopep8 by
+setting the <code>autopep8.args</code> setting.</p>
+</li>
+</ul>
+<a id="md:disabling-formatting-with-autopep8" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Disabling formatting with autopep8<a href="#md:disabling-formatting-with-autopep8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>If you want to disable the autopep8 formatter, you can
+<a href="https://code.visualstudio.com/docs/editor/extension-marketplace#_disable-an-extension">disable this extension</a>
+per workspace in Visual Studio Code.</p>
+<a id="md:settings" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Settings<a href="#md:settings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>There are several settings you can configure to customize the behavior of this
+extension.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Settings</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>autopep8.args</td>
+      <td><code>[]</code></td>
+      <td>Arguments passed to autopep8 to format Python files. Each argument should be provided as a separate string in the array. Example: <code>"autopep8.args" = ["--config", "&lt;file&gt;"]</code></td>
+    </tr>
+    <tr>
+      <td>autopep8.cwd</td>
+      <td><code>${workspaceFolder}</code></td>
+      <td>Sets the current working directory used to format Python files with autopep8. By default, it uses the root directory of the workspace <code>${workspaceFolder}</code>. You can set it to <code>${fileDirname}</code> to use the parent folder of the file being formatted as the working directory for autopep8.</td>
+    </tr>
+    <tr>
+      <td>autopep8.path</td>
+      <td><code>[]</code></td>
+      <td>Path or command to be used by the extension to format Python files with autopep8. Accepts an array of a single or multiple strings. If passing a command, each argument should be provided as a separate string in the array. If set to <code>["autopep8"]</code>, it will use the version of autopep8 available in the <code>PATH</code> environment variable. Note: Using this option may slowdown formatting. <br> Examples: <br> <code>["~/global_env/autopep8"]</code> <br> <code>["conda", "run", "-n", "lint_env", "python", "-m", "autopep8"]</code></td>
+    </tr>
+    <tr>
+      <td>autopep8.interpreter</td>
+      <td><code>[]</code></td>
+      <td>Path to a Python executable or a command that will be used to launch the autopep8 server and any subprocess. Accepts an array of a single or multiple strings. When set to <code>[]</code>, the extension will use the path to the selected Python interpreter. If passing a command, each argument should be provided as a separate string in the array.</td>
+    </tr>
+    <tr>
+      <td>autopep8.importStrategy</td>
+      <td><code>useBundled</code></td>
+      <td>Defines which autopep8 formatter binary to be used to format Python files. When set to <code>useBundled</code>, the extension will use the autopep8 formatter binary that is shipped with the extension. When set to <code>fromEnvironment</code>, the extension will attempt to use the autopep8 formatter binary and all dependencies that are available in the currently selected environment. <br> Note: If the extension can't find a valid autopep8 formatter binary in the selected environment, it will fallback to using the binary that is shipped with the extension. The <code>autopep8.path</code> setting takes precedence and overrides the behavior of <code>autopep8.importStrategy </code>.</td>
+    </tr>
+    <tr>
+      <td>autopep8.showNotification</td>
+      <td><code>off</code></td>
+      <td>Controls when notifications are shown by this extension. Accepted values are <code>onError</code>, <code>onWarning</code>, <code>always</code> and <code>off</code>.</td>
+    </tr>
+  </tbody>
+</table>
+<a id="md:commands" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Commands<a href="#md:commands" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autopep8: Restart</td>
+<td>Force re-start the format server.</td>
+</tr>
+</tbody>
+</table>
+<a id="md:logging" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Logging<a href="#md:logging" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>From the Command Palette (<strong>View</strong> &gt; <strong>Command Palette ...</strong>), run the
+<strong>Developer: Set Log Level...</strong> command. Select <strong>autopep8</strong> from the
+<strong>Extension logs</strong> group. Then select the log level you want to set.</p>
+<p>Alternatively, you can set the <code>autopep8.trace.server</code> setting to <code>verbose</code> to
+get more detailed logs from the autopep8 server. This can be helpful when filing
+bug reports.</p>
+<p>To open the logs, click on the language status icon (<code>{}</code>) on the bottom right
+of the Status bar, next to the Python language mode. Locate the <strong>autopep8</strong>
+entry and select <strong>Open logs</strong>.</p>
+<a id="md:troubleshooting" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Troubleshooting<a href="#md:troubleshooting" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>In this section, you will find some common issues you might encounter and how to
+resolve them. If you are experiencing any issues that are not covered here,
+please <a href="https://github.com/microsoft/vscode-autopep8/issues">file an issue</a>.</p>
+<ul>
+<li>
+<p>If the <code>autopep8.importStrategy</code> setting is set to <code>fromEnvironment</code> but
+autopep8 is not found in the selected environment, this extension will
+fallback to using the autopep8 binary that is shipped with the extension.
+However, if there are dependencies installed in the environment, those
+dependencies will be used along with the shipped autopep8 binary. This can
+lead to problems if the dependencies are not compatible with the shipped
+autopep8 binary.</p>
+<p>To resolve this issue, you can:</p>
+<ul>
+<li>Set the <code>autopep8.importStrategy</code> setting to <code>useBundled</code> and the
+<code>autopep8.path</code> setting to point to the custom binary of autopep8 you
+want to use; or</li>
+<li>Install autopep8 in the selected environment.</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:formatter-extension-for-visual-studio-code-using-autopep8"><span>Formatter extension for <wbr/>Visual <wbr/>Studio <wbr/>Code using autopep8</span></a><ul><li><a href="#md:usage-and-features"><span>Usage and <wbr/>Features</span></a></li><li><ul><li><a href="#md:disabling-formatting-with-autopep8"><span>Disabling formatting with autopep8</span></a></li></ul></li><li><a href="#md:settings"><span>Settings</span></a></li><li><a href="#md:commands"><span>Commands</span></a></li><li><a href="#md:logging"><span>Logging</span></a></li><li><a href="#md:troubleshooting"><span>Troubleshooting</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>autopep8</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
