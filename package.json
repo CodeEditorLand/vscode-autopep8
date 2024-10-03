@@ -129,8 +129,8 @@
 	"devDependencies": {
 		"@types/fs-extra": "^11.0.4",
 		"@types/glob": "^8.1.0",
-		"@types/node": "16.x",
-		"glob": "^10.3.12",
+		"@types/node": "22.x",
+		"glob": "^11.0.0",
 		"ts-loader": "^9.5.1"
 	},
 	"displayName": "autopep8",
