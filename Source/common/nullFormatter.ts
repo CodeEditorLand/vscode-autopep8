@@ -15,6 +15,7 @@ export function registerEmptyFormatter(): void {
 		registerDocumentFormattingEditProvider(getDocumentSelector(), {
 			provideDocumentFormattingEdits: function () {
 				traceLog("Formatting requested before server has started.");
+
 				return Promise.resolve(undefined);
 			},
 		}),

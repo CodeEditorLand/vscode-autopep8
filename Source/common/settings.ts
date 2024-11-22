@@ -19,6 +19,7 @@ export interface ISettings {
 	args: string[];
 	path: string[];
 	interpreter: string[];
+
 	importStrategy: string;
 	showNotifications: string;
 }
@@ -41,7 +42,9 @@ function resolveVariables(
 	env?: NodeJS.ProcessEnv,
 ): string[] {
 	const substitutions = new Map<string, string>();
+
 	const home = process.env.HOME || process.env.USERPROFILE;
+
 	if (home) {
 		substitutions.set("${userHome}", home);
 	}
@@ -49,11 +52,13 @@ function resolveVariables(
 		substitutions.set("${workspaceFolder}", workspace.uri.fsPath);
 	}
 	substitutions.set("${cwd}", process.cwd());
+
 	getWorkspaceFolders().forEach((w) => {
 		substitutions.set("${workspaceFolder:" + w.name + "}", w.uri.fsPath);
 	});
 
 	env = env || process.env;
+
 	if (env) {
 		for (const [key, value] of Object.entries(env)) {
 			if (value) {
@@ -63,6 +68,7 @@ function resolveVariables(
 	}
 
 	const modifiedValue = [];
+
 	for (const v of value) {
 		if (interpreter && v === "${interpreter}") {
 			modifiedValue.push(...interpreter);
@@ -84,6 +90,7 @@ function getCwd(
 	workspace: WorkspaceFolder,
 ): string {
 	const cwd = config.get<string>("cwd", workspace.uri.fsPath);
+
 	return resolveVariables([cwd], workspace)[0];
 }
 
@@ -92,6 +99,7 @@ export function getInterpreterFromSetting(
 	scope?: ConfigurationScope,
 ) {
 	const config = getConfiguration(namespace, scope);
+
 	return config.get<string[]>("interpreter");
 }
 
@@ -103,8 +111,10 @@ export async function getWorkspaceSettings(
 	const config = getConfiguration(namespace, workspace.uri);
 
 	let interpreter: string[] = [];
+
 	if (includeInterpreter) {
 		interpreter = getInterpreterFromSetting(namespace, workspace) ?? [];
+
 		if (interpreter.length === 0) {
 			traceLog(
 				`No interpreter found from setting ${namespace}.interpreter`,
@@ -114,6 +124,7 @@ export async function getWorkspaceSettings(
 			);
 			interpreter =
 				(await getInterpreterDetails(workspace.uri)).path ?? [];
+
 			if (interpreter.length > 0) {
 				traceLog(
 					`Interpreter from ms-python.python extension for ${workspace.uri.fsPath}:`,
@@ -146,6 +157,7 @@ export async function getWorkspaceSettings(
 		importStrategy: config.get<string>("importStrategy", "useBundled"),
 		showNotifications: config.get<string>("showNotifications", "off"),
 	};
+
 	return workspaceSetting;
 }
 
@@ -154,6 +166,7 @@ function getGlobalValue<T>(
 	key: string,
 ): T | undefined {
 	const inspect = config.inspect<T>(key);
+
 	return inspect?.globalValue ?? inspect?.defaultValue;
 }
 
@@ -164,8 +177,10 @@ export async function getGlobalSettings(
 	const config = getConfiguration(namespace);
 
 	let interpreter: string[] = [];
+
 	if (includeInterpreter) {
 		interpreter = getGlobalValue<string[]>(config, "interpreter") ?? [];
+
 		if (interpreter === undefined || interpreter.length === 0) {
 			interpreter = (await getInterpreterDetails()).path ?? [];
 		}
@@ -182,6 +197,7 @@ export async function getGlobalSettings(
 		showNotifications:
 			getGlobalValue<string>(config, "showNotifications") ?? "off",
 	};
+
 	return setting;
 }
 
@@ -197,7 +213,9 @@ export function checkIfConfigurationChanged(
 		`${namespace}.importStrategy`,
 		`${namespace}.showNotifications`,
 	];
+
 	const changed = settings.map((s) => e.affectsConfiguration(s));
+
 	return changed.includes(true);
 }
 
@@ -207,8 +225,10 @@ export function logDefaultFormatter(): void {
 			uri: workspace.uri,
 			languageId: "python",
 		});
+
 		if (!config) {
 			config = getConfiguration("editor", workspace.uri);
+
 			if (!config) {
 				traceInfo("Unable to get editor configuration");
 			}
@@ -217,6 +237,7 @@ export function logDefaultFormatter(): void {
 		traceInfo(
 			`Default formatter is set to ${formatter} for workspace ${workspace.uri.fsPath}`,
 		);
+
 		if (formatter !== EXTENSION_ID) {
 			traceWarn(
 				`autopep8 Formatter is NOT set as the default formatter for workspace ${workspace.uri.fsPath}`,
@@ -235,14 +256,17 @@ export function logLegacySettings(): void {
 	getWorkspaceFolders().forEach((workspace) => {
 		try {
 			const legacyConfig = getConfiguration("python", workspace.uri);
+
 			const legacyArgs = legacyConfig.get<string[]>(
 				"formatting.autopep8Args",
 				[],
 			);
+
 			const legacyPath = legacyConfig.get<string>(
 				"formatting.autopep8Path",
 				"",
 			);
+
 			if (legacyArgs.length > 0) {
 				traceWarn(
 					`"python.formatting.autopep8Args" is deprecated. Use "autopep8.args" instead.`,
