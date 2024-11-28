@@ -10,6 +10,7 @@ import {
 } from "./vscodeapi";
 
 let disposables: Disposable[] = [];
+
 export function registerEmptyFormatter(): void {
 	disposables.push(
 		registerDocumentFormattingEditProvider(getDocumentSelector(), {

@@ -12,6 +12,7 @@ import { Command } from "vscode-languageclient";
 import { createLanguageStatusItem, getDocumentSelector } from "./vscodeapi";
 
 let _status: LanguageStatusItem | undefined;
+
 export function registerLanguageStatusItem(
 	id: string,
 	name: string,
