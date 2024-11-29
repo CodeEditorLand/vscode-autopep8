@@ -15,12 +15,17 @@ import { getConfiguration, getWorkspaceFolders } from "./vscodeapi";
 
 export interface ISettings {
 	cwd: string;
+
 	workspace: string;
+
 	args: string[];
+
 	path: string[];
+
 	interpreter: string[];
 
 	importStrategy: string;
+
 	showNotifications: string;
 }
 
@@ -48,9 +53,11 @@ function resolveVariables(
 	if (home) {
 		substitutions.set("${userHome}", home);
 	}
+
 	if (workspace) {
 		substitutions.set("${workspaceFolder}", workspace.uri.fsPath);
 	}
+
 	substitutions.set("${cwd}", process.cwd());
 
 	getWorkspaceFolders().forEach((w) => {
@@ -81,6 +88,7 @@ function resolveVariables(
 		for (const [key, value] of substitutions) {
 			s = s.replace(key, value);
 		}
+
 		return s;
 	});
 }
@@ -119,9 +127,11 @@ export async function getWorkspaceSettings(
 			traceLog(
 				`No interpreter found from setting ${namespace}.interpreter`,
 			);
+
 			traceLog(
 				`Getting interpreter from ms-python.python extension for workspace ${workspace.uri.fsPath}`,
 			);
+
 			interpreter =
 				(await getInterpreterDetails(workspace.uri)).path ?? [];
 
@@ -233,7 +243,9 @@ export function logDefaultFormatter(): void {
 				traceInfo("Unable to get editor configuration");
 			}
 		}
+
 		const formatter = config.get<string>("defaultFormatter", "");
+
 		traceInfo(
 			`Default formatter is set to ${formatter} for workspace ${workspace.uri.fsPath}`,
 		);
@@ -242,9 +254,11 @@ export function logDefaultFormatter(): void {
 			traceWarn(
 				`autopep8 Formatter is NOT set as the default formatter for workspace ${workspace.uri.fsPath}`,
 			);
+
 			traceWarn(
 				"To set autopep8 Formatter as the default formatter, add the following to your settings.json file:",
 			);
+
 			traceWarn(
 				`\n"[python]": {\n    "editor.defaultFormatter": "${EXTENSION_ID}"\n}`,
 			);
@@ -271,9 +285,11 @@ export function logLegacySettings(): void {
 				traceWarn(
 					`"python.formatting.autopep8Args" is deprecated. Use "autopep8.args" instead.`,
 				);
+
 				traceWarn(
 					`"python.formatting.autopep8Args" for workspace ${workspace.uri.fsPath}:`,
 				);
+
 				traceWarn(`\n${JSON.stringify(legacyArgs, null, 4)}`);
 			}
 
@@ -281,9 +297,11 @@ export function logLegacySettings(): void {
 				traceWarn(
 					`"python.formatting.autopep8Path" is deprecated. Use "autopep8.path" instead.`,
 				);
+
 				traceWarn(
 					`"python.formatting.autopep8Path" for workspace ${workspace.uri.fsPath}:`,
 				);
+
 				traceWarn(`\n${JSON.stringify(legacyPath, null, 4)}`);
 			}
 		} catch (err) {
