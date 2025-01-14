@@ -132,9 +132,9 @@
 	"devDependencies": {
 		"@types/fs-extra": "11.0.4",
 		"@types/glob": "8.1.0",
-		"@types/node": "22.10.5",
-		"glob": "11.0.0",
-		"ts-loader": "9.5.1"
+		"@types/node": "22.10.6",
+		"glob": "11.0.1",
+		"ts-loader": "9.5.2"
 	},
 	"extensionDependencies": [
 		"ms-python.python"
