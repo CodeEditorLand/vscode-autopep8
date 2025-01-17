@@ -127,12 +127,12 @@
 		"workspaceContains:.flake8"
 	],
 	"dependencies": {
-		"fs-extra": "11.2.0"
+		"fs-extra": "11.3.0"
 	},
 	"devDependencies": {
 		"@types/fs-extra": "11.0.4",
 		"@types/glob": "8.1.0",
-		"@types/node": "22.10.6",
+		"@types/node": "22.10.7",
 		"glob": "11.0.1",
 		"ts-loader": "9.5.2"
 	},
